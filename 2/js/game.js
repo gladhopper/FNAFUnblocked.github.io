@@ -334,6 +334,7 @@ var P;
         }
         audio.loadSoundbankSB2 = loadSoundbankSB2;
         function loadSoundbankBuffer(name) {
+            console.log("--fx--loadSoundbankBuffer--", name);
             return P.io.getAssetManager().loadSoundbankFile(SB2_SOUNDBANK_FILES[name])
                 .then((buffer) => P.audio.decodeAudio(buffer))
                 .then((sound) => soundbank[name] = sound);
@@ -2142,15 +2143,19 @@ var P;
                 this.soundbankSource = 'soundbank/';
             }
             loadSoundbankFile(src) {
+                console.log("--fx--FetchingAssetManager--loadSoundbankFile--", src);
                 return this.loadArrayBuffer(this.soundbankSource + src);
             }
             loadFont(src) {
+                console.log("--fx--FetchingAssetManager--loadFont--", src);
                 return this.loadBlob(src);
             }
             loadArrayBuffer(src) {
+                console.log("--fx--FetchingAssetManager--loadArrayBuffer--", src);
                 return new Request(io.config.localPath + src).load('arraybuffer');
             }
             loadBlob(src) {
+                console.log("--fx--FetchingAssetManager--loadBlob--", src);
                 return new Request(io.config.localPath + src).load('blob');
             }
         }
@@ -10992,15 +10997,20 @@ var P;
     }
 
     loadSoundbankFile(src) {
-      return this.fetch('soundbank/' + src).then(function(e) { return e.arrayBuffer(); });
+        console.log("--fx--loadSoundbankFile--", src);
+        return this.fetch('soundbank/' + src).then(function(e) { return e.arrayBuffer(); });
     }
 
     loadFont(src) {
-      return this.fetch(src).then(function(e) { return e.blob(); });
+        console.log("--fx--loadFont--", src);
+        return this.fetch(src).then(function(e) { return e.blob(); });
     }
 
     fetch(u) {
-      return fetch(this.data[u]);
+        console.log("--fx--fetch--", u);
+        // console.log("--fx--fetch--data--", this.data[u]);
+        return fetch(this.data[u]);
+        // return fetch(u);
     }
   });
 
