@@ -9,6 +9,22 @@
 <audio id="channelambient2" volume="0.1" loop autoplay></audio>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="title">Five Nights at Freddy's Unblocked</title>
+<script>
+	// select the target node
+var target = document.querySelector('title');
+
+// create an observer instance
+var observer = new MutationObserver(function(mutations) {
+    // We need only first event and only new value of the title
+    console.trace(mutations[0].target.nodeValue);
+});
+
+// configuration of the observer:
+var config = { subtree: true, characterData: true, childList: true };
+
+// pass in the target node, as well as the observer options
+observer.observe(target, config);
+</script>
 <script src="jquery.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="feed.css" />
 <link rel="stylesheet" type="text/css" media="screen and (max-device-width: 1920px)" href="1080.css" />

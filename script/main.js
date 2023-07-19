@@ -44,7 +44,7 @@ if(BUILD_TARGET == "NW.JS"){
 	debuglog('Skipping Steam auth...');
 };
 
-document.getElementById("title").innerHTML += VERSION;
+// document.getElementById("title").innerHTML += VERSION;
 
 assertButtons();
 var cachedbody = document.getElementById("alldahtml").innerHTML;
